@@ -1,6 +1,7 @@
 import streamlit as st
 import pickle
 import requests
+from urllib.request import urlopen
 
 def fetch_poster(movie_id):
      url = "https://api.themoviedb.org/3/movie/{}?api_key= YOUR_API_KEY &language=en-US".format(movie_id)
@@ -10,7 +11,7 @@ def fetch_poster(movie_id):
      full_path = "https://image.tmdb.org/t/p/w500/"+poster_path
      return full_path
 movies = pickle.load(open("movies_list.pkl", 'rb'))
-similarity = pickle.load(open("similarity.pkl", 'rb'))
+similarity = cp.load(urlopen("https://drive.google.com/file/d/1sJQ07WnplzRY2jk32FSS_bgPcYhGmzRX/view?usp=drive_link", 'rb'))
 movies_list=movies['title'].values
 
 st.header("Movie Recommender System")
